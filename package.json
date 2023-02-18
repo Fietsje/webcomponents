@@ -1,0 +1,24 @@
+{
+  "name": "webcomponents",
+  "version": "1.0.0",
+  "description": "web components with routing",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fietsje/webcomponents.git"
+  },
+  "keywords": [
+    "webcomponents",
+    "routing",
+    "vanilla"
+  ],
+  "author": "Bas Spruit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fietsje/webcomponents/issues"
+  },
+  "homepage": "https://github.com/Fietsje/webcomponents#readme"
+}

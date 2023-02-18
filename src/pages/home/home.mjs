@@ -1,4 +1,5 @@
-import load from "../../shared/loadFile.mjs";
+import loadStylesheet from "../../shared/loadStylesheet.mjs";
+import loadHtml from "../../shared/loadHtml.mjs";
 
 export default class HomePage extends HTMLElement {
     constructor() {
@@ -6,7 +7,8 @@ export default class HomePage extends HTMLElement {
     }
 
     async connectedCallback() {
-        this.innerHTML = await load('home.html', import.meta.url);
+        loadHtml(this, 'home.html', import.meta.url);
+        loadStylesheet('home.css', import.meta.url);
     }
 }
 
