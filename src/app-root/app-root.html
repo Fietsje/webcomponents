@@ -2,11 +2,12 @@
 <div class="app-content">
     <app-content>
         <app-router>
-            <route path="#/home" title="home" component="app-home"></route>
-            <route path="#/about" title="about" component="app-about"></route>
-            <route path="#/contact" title="contact" component="app-contact"></route>
-            <route path="#/misc" title="misc" component="app-misc"></route>
-            <route path="" title="home" component="app-home"></route>
+            <route path="#/home" title="Home" component="app-home"></route>
+            <route path="#/about" title="About" component="app-about"></route>
+            <route path="#/contact" title="Contact" component="app-contact"></route>
+            <route path="#/misc" title="Misc" component="app-misc"></route>
+            <route path="" redirectto="#/home"></route>
+            <route path="*" title="Not found" component="app-notfound"></route>
             <outlet><!--dynamic content here--></outlet>
         </app-router>
     </app-content>

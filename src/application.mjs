@@ -7,6 +7,7 @@ import HomePage from './pages/home/home.mjs';
 import AboutPage from './pages/about/about.mjs';
 import ContactPage from './pages/contact/contact.mjs';
 import MiscPage from './pages/misc/misc.mjs';
+import NotFoundPage from './pages/notfound/notfound.mjs';
 
 export default [
     AppRoot,
@@ -15,7 +16,8 @@ export default [
     HomePage,
     AboutPage,
     ContactPage,
-    MiscPage
+    MiscPage,
+    NotFoundPage
 ];
 (function main() {
     document.adoptedStyleSheets.push(css);

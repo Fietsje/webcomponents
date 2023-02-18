@@ -1,4 +1,5 @@
-import load from "../../shared/loadFile.mjs";
+import loadStylesheet from "../../shared/loadStylesheet.mjs";
+import loadHtml from "../../shared/loadHtml.mjs";
 
 export default class ContactPage extends HTMLElement {
     constructor() {
@@ -6,7 +7,8 @@ export default class ContactPage extends HTMLElement {
     }
 
     async connectedCallback() {
-        this.innerHTML = await load('contact.html', import.meta.url);
+        loadHtml(this, 'contact.html', import.meta.url);
+        loadStylesheet('contact.css', import.meta.url);
     }
 }
 

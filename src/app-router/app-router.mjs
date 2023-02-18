@@ -11,19 +11,35 @@ export default class AppRouter extends HTMLElement {
     }
 
     loadRoute(route) {
-        let foundRoute = null;
-        for (let index = 0; index < this.routes.length; index++) {
-            const element = this.routes[index];
-            if (element.getAttribute('path') === route) {
-                foundRoute = element;
-            }
+        /** IDEAS:
+         * 1) split routes so that parameters can be passed
+         * 2) make routes be able to have children
+         */
+        let foundRoute = [].find.call(this.routes, (item) => item.getAttribute('path') === route);
+
+        if (!foundRoute) {
+            foundRoute = [].find.call(this.routes, (item) => item.getAttribute('path') === '*');
         }
 
-        if (foundRoute) {
-            const name = foundRoute.getAttribute('component');
-            const component = document.createElement(name);
-            this.outlet.replaceChildren(component);
+        if (!foundRoute) {
+            throw `Route not found: ${route}`;
         }
+
+        const name = foundRoute.getAttribute('component');
+        const redirectTo = foundRoute.getAttribute('redirectto');
+        if (!name && !redirectTo) {
+            throw `Cannot process found route: ${route}`;
+        }
+
+        if (!name) {
+            history.pushState(null, null, redirectTo);
+            window.location.assign(redirectTo);
+            return;
+        }
+
+        const component = document.createElement(name);
+        this.outlet.replaceChildren(component);
+        document.title = foundRoute.getAttribute('title') || document.URL;
     }
 
     get routes() {

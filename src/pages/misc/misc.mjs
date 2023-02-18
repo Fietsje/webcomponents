@@ -1,4 +1,5 @@
-import load from "../../shared/loadFile.mjs";
+import loadStylesheet from "../../shared/loadStylesheet.mjs";
+import loadHtml from "../../shared/loadHtml.mjs";
 
 export default class MiscPage extends HTMLElement {
     constructor() {
@@ -6,7 +7,8 @@ export default class MiscPage extends HTMLElement {
     }
 
     async connectedCallback() {
-        this.innerHTML = await load('misc.html', import.meta.url);
+        loadHtml(this, 'misc.html', import.meta.url);
+        loadStylesheet('misc.css', import.meta.url);
     }
 }
 
