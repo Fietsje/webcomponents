@@ -8,11 +8,13 @@ import AboutPage from './pages/about/about.mjs';
 import ContactPage from './pages/contact/contact.mjs';
 import MiscPage from './pages/misc/misc.mjs';
 import NotFoundPage from './pages/notfound/notfound.mjs';
+import AppWrapper from './app-wrapper/app-wrapper.mjs';
 
 export default [
     AppRoot,
     AppNavigationBar,
     AppRouter,
+    AppWrapper,
     HomePage,
     AboutPage,
     ContactPage,

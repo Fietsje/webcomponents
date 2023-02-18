@@ -1,0 +1,5 @@
+.app-wrapper span {
+    border: 1px solid black;
+    text-decoration: underline;
+    font-weight: bold;
+}

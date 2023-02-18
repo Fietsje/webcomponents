@@ -7,9 +7,9 @@ export default class AppRoot extends HTMLElement {
     }
 
     async connectedCallback() {
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.innerHTML = await loadFile('app-root.html', import.meta.url);
-        this.shadowRoot.adoptedStyleSheets = [css];
+        //this.attachShadow({ mode: 'open' });
+        this.innerHTML = await loadFile('app-root.html', import.meta.url);
+        document.adoptedStyleSheets.push(css);
 
     }
 }

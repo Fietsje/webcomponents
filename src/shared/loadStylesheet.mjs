@@ -1,16 +1,22 @@
 import hashCode from "./hashCode.mjs";
 
 export default async function loadStylesheet(htmlRelativeUrl, baseUrl) {
-    const styleSheets = document.querySelectorAll('style');
+    let styleSheets = document.querySelectorAll('style');
     const htmlUrl = new URL(htmlRelativeUrl, baseUrl).href;
     const hash = hashCode(htmlUrl).toString();
-    const found = [].some.call(styleSheets, (sheet) => sheet.getAttribute('id') === hash);
+    let found = [].some.call(styleSheets, (sheet) => sheet.getAttribute('id') === hash);
 
     if (!found) {
-        const result = await fetch(htmlUrl).then(response => response.text());
-        const sheet = document.head.appendChild(document.createElement('style'));
+        const sheet = document.createElement('style');
         sheet.setAttribute('id', hash);
         sheet.setAttribute('type', 'text/css');
-        sheet.innerText = result;
+
+        /** Re-check for existing script first, otherwise multiples will exist */
+        styleSheets = document.querySelectorAll('style');
+        if (![].some.call(styleSheets, (sheet) => sheet.getAttribute('id') === hash)) {
+            document.head.appendChild(sheet);
+            const result = await fetch(htmlUrl).then(response => response.text());
+            sheet.appendChild(document.createTextNode(result));
+        }
     }
 }
