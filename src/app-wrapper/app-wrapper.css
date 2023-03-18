@@ -3,3 +3,8 @@
     text-decoration: underline;
     font-weight: bold;
 }
+
+.app-wrapper-header {
+    text-decoration: underline;
+    font-size: 150%;
+}

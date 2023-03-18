@@ -17,7 +17,9 @@ export default class AppWrapper extends HTMLElement {
         }
 
         if (this.headerText) {
-            this.querySelector('.app-wrapper-header').innerText = this.headerText;
+            const header = this.querySelector('.app-wrapper-header');
+
+            if (header) { header.innerText = this.headerText; }
         }
     }
 
