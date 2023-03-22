@@ -1,8 +1,7 @@
 export default function debounce(callback, delay = 1000) {
-    let timeout;
-
+    let timeout = null;
     return (...args) => new Promise(resolve => {
-        if (timeout) { clearTimeout(timeout); }
+        clearTimeout(timeout);
         timeout = setTimeout(() => resolve(callback(...args)), delay);
     });
 }
