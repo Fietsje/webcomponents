@@ -1,5 +1,5 @@
-import loadStylesheet from "../../shared/loadStylesheet.mjs";
 import loadHtml from "../../shared/loadHtml.mjs";
+import css from './about.css' assert{type: 'css'};
 
 export default class AboutPage extends HTMLElement {
     constructor() {
@@ -7,8 +7,9 @@ export default class AboutPage extends HTMLElement {
     }
 
     async connectedCallback() {
-        loadHtml(this, 'about.html', import.meta.url);
-        loadStylesheet('about.css', import.meta.url);
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.adoptedStyleSheets = [css];
+        await loadHtml(this.shadowRoot, 'about.html', import.meta.url);
     }
 }
 

@@ -1,5 +1,5 @@
-import loadStylesheet from "../../shared/loadStylesheet.mjs";
 import loadHtml from "../../shared/loadHtml.mjs";
+import css from './notfound.css' assert{type: 'css'};
 
 export default class NotFoundPage extends HTMLElement {
     constructor() {
@@ -7,8 +7,9 @@ export default class NotFoundPage extends HTMLElement {
     }
 
     async connectedCallback() {
-        loadHtml(this, 'notfound.html', import.meta.url);
-        loadStylesheet('notfound.css', import.meta.url);
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.adoptedStyleSheets = [css];
+        await loadHtml(this.shadowRoot, 'notfound.html', import.meta.url);
     }
 }
 

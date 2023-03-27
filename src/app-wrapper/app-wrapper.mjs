@@ -1,5 +1,5 @@
 import loadHtml from "../shared/loadHtml.mjs";
-import loadStylesheet from "../shared/loadStylesheet.mjs";
+import css from './app-wrapper.css' assert{type: 'css'};
 
 export default class AppWrapper extends HTMLElement {
     constructor() {
@@ -8,23 +8,24 @@ export default class AppWrapper extends HTMLElement {
 
     async connectedCallback() {
         const originalHtml = this.innerHTML;
+        this.attachShadow({ mode: 'open' });
 
-        await loadHtml(this, 'app-wrapper.html', import.meta.url);
-        await loadStylesheet('app-wrapper.css', import.meta.url);
+        await loadHtml(this.shadowRoot, 'app-wrapper.html', import.meta.url);
+        this.shadowRoot.adoptedStyleSheets = [css];
 
         if (this.content.length) {
             this.content[0].innerHTML = originalHtml;
         }
 
         if (this.headerText) {
-            const header = this.querySelector('.app-wrapper-header');
+            const header = this.shadowRoot.querySelector('.app-wrapper-header');
 
             if (header) { header.innerText = this.headerText; }
         }
     }
 
     get content() {
-        return this.querySelectorAll('.template-content');
+        return this.shadowRoot.querySelectorAll('.template-content');
     }
 
     get headerText() {

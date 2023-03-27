@@ -1,4 +1,4 @@
-import loadFile from '../shared/loadFile.mjs';
+import loadHtml from '../shared/loadHtml.mjs';
 import css from './app-root.css' assert{type: 'css'};
 
 export default class AppRoot extends HTMLElement {
@@ -7,10 +7,9 @@ export default class AppRoot extends HTMLElement {
     }
 
     async connectedCallback() {
-        //this.attachShadow({ mode: 'open' });
-        this.innerHTML = await loadFile('app-root.html', import.meta.url);
-        document.adoptedStyleSheets.push(css);
-
+        this.attachShadow({ mode: 'open' });
+        loadHtml(this.shadowRoot, 'app-root.html', import.meta.url);
+        this.shadowRoot.adoptedStyleSheets = [css];
     }
 }
 
