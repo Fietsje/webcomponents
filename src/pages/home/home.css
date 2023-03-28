@@ -1,3 +1,15 @@
-.home a {
-    text-decoration: underline;
+.home-main {
+    display: flex;
+}
+
+.home-left {
+    vertical-align: top;
+    width: 20vw;
+}
+
+.home-center {
+    vertical-align: top;
+    flex: 1;
+    padding: .5em;
+    padding-top: 0;
 }

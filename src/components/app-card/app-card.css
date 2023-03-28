@@ -1,0 +1,12 @@
+.app-card {
+    border: 1px solid var(--main-border-color);
+    border-radius: 4px;
+    background-color: var(--main-bg-color);
+    padding: 0.25em;
+    color: var(--main-text-color);
+    box-shadow: 0.1em 0.1em rgba(255, 255, 255, .25);
+}
+
+.app-card .app-card-header {
+    font-size: 125%;
+}

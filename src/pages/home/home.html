@@ -1,15 +1,17 @@
-<span>HOME WORKS</span>
-<br>
-<app-wrapper header="This should be the header of the wrapped content">
-    <span>This should be wrapped content</span>
-</app-wrapper>
+<div class="home-main">
+    <div class="home-left">
+        <app-card header="Header">
+            <span>Wrapped content on the left</span>
+        </app-card>
+    </div>
+    <div class="home-center">
+        <app-card header="Main">
+            <span>Main content with a border</span>
+        </app-card>
 
-<br>
-<app-wrapper header="This should be the header of the second wrapped content">
-    <span>This should be wrapped content also</span>
-</app-wrapper>
-
-<br>
-<app-wrapper>
-    <span>wrapped content without a header</span>
-</app-wrapper>
+        <br>
+        <app-card>
+            <span>Separate content without a header</span>
+        </app-card>
+    </div>
+</div>

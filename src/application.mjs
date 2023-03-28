@@ -1,23 +1,21 @@
 import css from './application.css' assert {type: 'css'};
 
-import AppRoot from "./app-root/app-root.mjs";
-import AppNavigationBar from "./app-navigation-bar/app-navigation-bar.mjs";
-import AppRouter from './app-router/app-router.mjs';
+import AppRoot from "./components/app-root/app-root.mjs";
+import AppNavigationBar from "./components/app-navigation-bar/app-navigation-bar.mjs";
+import AppRouter from './components/app-router/app-router.mjs';
 import HomePage from './pages/home/home.mjs';
 import AboutPage from './pages/about/about.mjs';
-import ContactPage from './pages/contact/contact.mjs';
 import MiscPage from './pages/misc/misc.mjs';
 import NotFoundPage from './pages/notfound/notfound.mjs';
-import AppWrapper from './app-wrapper/app-wrapper.mjs';
+import AppCard from './components/app-card/app-card.mjs';
 
 export default [
     AppRoot,
     AppNavigationBar,
     AppRouter,
-    AppWrapper,
+    AppCard,
     HomePage,
     AboutPage,
-    ContactPage,
     MiscPage,
     NotFoundPage
 ];
